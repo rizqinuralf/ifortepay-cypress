@@ -1,4 +1,4 @@
-const signUpPage = require('../pages/signUpPage');
+const signUpPage = require('../../pages/signUpPage');
 const { faker } = require('@faker-js/faker');
 
 describe('Sign Up', () => {
