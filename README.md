@@ -1,6 +1,8 @@
 # Cypress Automation Test for Ifortepay Assessment
 
-This project contains automated tests for the Ifortepay assessment using Cypress.
+This project contains automated tests for the Ifortepay assessment, specifically testing the website https://automationexercise.com/ using Cypress.
+
+This project uses the `faker` library to generate random data for the tests.
 
 ## Installation
 
