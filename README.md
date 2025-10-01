@@ -1,6 +1,6 @@
-# Cypress Automation Test for Ifortepay
+# Cypress Automation Test for Ifortepay Assessment
 
-This project contains automated tests for the Ifortepay application using Cypress.
+This project contains automated tests for the Ifortepay assessment using Cypress.
 
 ## Installation
 
