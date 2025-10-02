@@ -32,10 +32,22 @@ npx cypress run --spec cypress/e2e/signUp.cy.js
 
 This project follows the Page Object Model (POM) design pattern, which helps to create a scalable and maintainable test automation framework.
 
-- **`cypress/e2e`**: This directory contains all the end-to-end test files (specs).
-  - **`ui-automation-testing`**: This sub-directory contains the main test suites for the application.
-- **`cypress/pages`**: This directory contains the page objects, which represent the pages of the application and encapsulate the logic for interacting with the UI elements.
-- **`cypress/fixtures`**: This directory is used to store test data that can be used in the tests.
-- **`cypress/support`**: This directory contains custom commands and other support files that can be used across all the tests.
+```
+cypress/
+├── downloads/                  # Downloaded files during tests
+├── e2e/                        # End-to-end test specs
+│   └── ui-automation-testing/  # Feature-based test grouping
+│       ├── signIn.cy.js        # Sign-in test suite
+│       └── signUp.cy.js        # Sign-up test suite
+├── fixtures/                   # Static test data
+│   └── example.json            # Example fixture file
+├── pages/                      # Page Object Model (POM) layer
+│   └── signUpPage.js           # Page object for sign-up/sign-in page
+├── screenshots/                # Screenshots captured during test runs
+└── support/                    # Support files and custom commands
+    ├── commands.js             # Custom Cypress commands
+    └── e2e.js                  # Global hooks and configurations
+```
+
 - **`cypress.config.js`**: This is the main configuration file for Cypress.
 - **`package.json`**: This file lists the project dependencies and defines the scripts for running the tests.
