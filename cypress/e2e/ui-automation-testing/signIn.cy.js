@@ -22,4 +22,14 @@ describe('Sign In', () => {
     // Add an assertion to verify successful login
     cy.contains('Logged in as ' + user.name).should('be.visible');
   });
+
+  it('Sign In using unregistered email', () => {
+    const randomEmail = `test${Date.now()}@test.com`;
+    signUpPage.visit();
+    signUpPage.clickSignupLogin();
+    signUpPage.fillLoginEmail(randomEmail);
+    signUpPage.fillLoginPassword('password');
+    signUpPage.clickLogin();
+    cy.contains('Your email or password is incorrect!').should('be.visible');
+  });
 });

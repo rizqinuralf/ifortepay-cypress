@@ -15,9 +15,22 @@ describe('Sign Up', () => {
     signUpPage.fillName(name);
     signUpPage.fillEmail(email);
     signUpPage.clickSignup();
-    // Now on the account information page
-    // Instead of trying to click and check for an error that is not in the DOM,
-    // we can check that the input fields have the 'required' attribute.
     signUpPage.elements.passwordInput().should('have.attr', 'required');
+  });
+
+  it('Signing Up user with already registered email', () => {
+    // First sign up
+    const user = signUpPage.signUpUser();
+    cy.get('[data-qa="continue-button"]').click();
+
+    // Log out
+    cy.get('a[href="/logout"]').click();
+
+    // Attempt to sign up again with the same email
+    signUpPage.clickSignupLogin();
+    signUpPage.fillName(user.name);
+    signUpPage.fillEmail(user.email);
+    signUpPage.clickSignup();
+    cy.contains('Email Address already exist!').should('be.visible');
   });
 });
