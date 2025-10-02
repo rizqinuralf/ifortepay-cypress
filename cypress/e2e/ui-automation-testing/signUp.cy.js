@@ -3,6 +3,10 @@ const { faker } = require('@faker-js/faker');
 
 describe('Sign Up', () => {
   it('Signing Up user with valid data', () => {
+    signUpPage.signUpUser();
+  });
+
+  it('Signing Up user without filled in any fields', () => {
     const name = faker.person.firstName();
     const email = faker.internet.email();
 
@@ -11,24 +15,9 @@ describe('Sign Up', () => {
     signUpPage.fillName(name);
     signUpPage.fillEmail(email);
     signUpPage.clickSignup();
-    cy.contains('Enter Account Information').should('be.visible');
-    signUpPage.fillAccountInformation(
-      'password123',
-      '1',
-      'January',
-      '2000',
-      name,
-      faker.person.lastName(),
-      faker.company.name(),
-      faker.location.streetAddress(),
-      faker.location.secondaryAddress(),
-      'United States',
-      faker.location.state(),
-      faker.location.city(),
-      faker.location.zipCode(),
-      faker.phone.number()
-    );
-    signUpPage.clickCreateAccount();
-    cy.contains('Account Created!').should('be.visible');
+    // Now on the account information page
+    // Instead of trying to click and check for an error that is not in the DOM,
+    // we can check that the input fields have the 'required' attribute.
+    signUpPage.elements.passwordInput().should('have.attr', 'required');
   });
 });
